@@ -64,7 +64,7 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	//createChart("linesContainer", "Code Base", timespan, linesSeries)
 
 	var linesSeries = [{name: "Lines", data: linesDiff}]
-	createChart("linesContainer", "line", "Lines of Code Changes", timespan, linesSeries)
+	createChart("linesContainer", "column", "Lines of Code Changes", timespan, linesSeries)
 
 	/*
 	var issueSeries = [{name: "New", data: issuesNew}, {name: "Closed", data: issuesClosed}]

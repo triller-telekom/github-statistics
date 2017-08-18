@@ -28,9 +28,9 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	})
 
 	//prs
-	var prsNew = data.map(function(item){
-		return parseInt(item['PRsNew'], 10)
-	})	
+	//var prsNew = data.map(function(item){
+	//	return parseInt(item['PRsNew'], 10)
+	//})	
 	var prsMerged = data.map(function(item){
 		return parseInt(item['PRsMerged'], 10)
 	})
@@ -38,33 +38,44 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	//lines
 	var linedAdded = data.map(function(item){
 		return parseInt(item['LinesAdded'], 10)
-	})	
+	})
 	var linesDeleted = data.map(function(item){
 		return parseInt(item['LinesDeleted'], 10)
 	})
+	var linesDiff = data.map(function(item){
+		return parseInt(item['LinesDiff'], 10)
+	})
 	
 	//issues
+	/*
 	var issuesNew = data.map(function(item){
 		return parseInt(item['IssuesNew'], 10)
 	})	
 	var issuesClosed = data.map(function(item){
 		return parseInt(item['IssuesClosed'], 10)
 	})
+	*/
 
-	var prSeries = [{name: "New", data: prsNew}, {name: "Merged", data: prsMerged}]
-	createChart("prContainer", "Pull requests", timespan, prSeries)
+	//var prSeries = [{name: "New", data: prsNew}, {name: "Merged", data: prsMerged}]
+	var prSeries = [{name: "Merged", data: prsMerged}]
+	createChart("prContainer", "column", "Pull requests", timespan, prSeries)
 
-	var linesSeries = [{name: "Added Lines", data: linedAdded}, {name: "Deleted Lines", data: linesDeleted}]
-	createChart("linesContainer", "Code Base", timespan, linesSeries)
-	
+	//var linesSeries = [{name: "Added Lines", data: linedAdded}, {name: "Deleted Lines", data: linesDeleted}]
+	//createChart("linesContainer", "Code Base", timespan, linesSeries)
+
+	var linesSeries = [{name: "Lines", data: linesDiff}]
+	createChart("linesContainer", "line", "Lines of Code Changes", timespan, linesSeries)
+
+	/*
 	var issueSeries = [{name: "New", data: issuesNew}, {name: "Closed", data: issuesClosed}]
-	createChart("issueContainer", "Issues", timespan, issueSeries)
+	createChart("issueContainer", "column", "Issues", timespan, issueSeries)
+	*/
 });
 
-function createChart(container, title, categories, series) {
+function createChart(container, type, title, categories, series) {
 	Highcharts.chart(container, {
 		chart: {
-			type: 'column',
+			type: type,
 		},
         
 		yAxis: {

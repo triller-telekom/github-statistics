@@ -33,7 +33,8 @@ public class PersistStats {
 		headLineBuilder.append("PRsNew,");
 		headLineBuilder.append("PRsMerged,");
 		headLineBuilder.append("LinesAdded,");
-		headLineBuilder.append("LinesDeleted\n");
+		headLineBuilder.append("LinesDeleted,");
+		headLineBuilder.append("LinesDiff\n");
 
 		return headLineBuilder.toString();
 	}
@@ -60,7 +61,8 @@ public class PersistStats {
 		sb.append(result.getPrsNew() + ",");
 		sb.append(result.getPrsMerged() + ",");
 		sb.append(result.getAddedLines() + ",");
-		sb.append(result.getDeletedLines() + "\n");
+		sb.append(result.getDeletedLines() + ",");
+		sb.append((result.getAddedLines() - result.getDeletedLines()) + "\n");
 
 		return sb.toString();
 	}

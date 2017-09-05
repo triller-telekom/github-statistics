@@ -40,6 +40,7 @@ public class GithubStats {
 		else {
 			System.out.println("Usage: java- jar GithubStats.jar <reviewDay(yyyy-mm-dd)> <numIntervals> <sprintWeeks> <path to stats.sh in repository> (<GitHubOAuthToken>)" );
 			System.out.println("Example: java- jar GithubStats.jar 2017-08-23 26 2 /home/USER/smarthome-master/git/smarthome xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" );
+			System.exit(0);
 		}
 		
 		INTERVAL_DAYS = SPRINT_WEEKS * 7;

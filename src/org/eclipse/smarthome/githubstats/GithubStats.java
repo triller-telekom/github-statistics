@@ -72,7 +72,9 @@ public class GithubStats {
 			stats.fetchData();
 			
 			StatisticResult result = stats.getResult();
-			persister.persist(result);			
+			persister.persist(result);
+			
+			System.out.println(result);
 			
 			spanStart = DateUtils.addDays(tmpEnd, 1);
 			tmpEnd = DateUtils.addDays(spanStart, INTERVAL_DAYS-1);

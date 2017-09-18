@@ -34,6 +34,8 @@ public class PRHandler extends AbstractHandler {
 		String to_s = DateFormatUtils.format(to, "yyyy-MM-dd");
 		GHIssueSearchBuilder isb = github.searchIssues()
 				.q("repo:" + repo.getFullName() + " type:pr created:" + from_s + ".." + to_s);
+		
+//		System.out.println("pr query: " + "repo:" + repo.getFullName() + " type:pr created:" + from_s + ".." + to_s);
 
 		prs = isb.list().asList();
 
@@ -60,7 +62,7 @@ public class PRHandler extends AbstractHandler {
 
 			String s = null;
 			while ((s = stdInput.readLine()) != null) {
-//				System.out.println("Line from shell: " + s);
+//				System.out.println("Line from shell: " +s);
 				this.addedLines = Long.parseLong(s.split(",")[0]);
 				this.deletedLines = Long.parseLong(s.split(",")[1]);
 			}

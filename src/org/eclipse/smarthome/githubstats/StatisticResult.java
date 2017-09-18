@@ -16,6 +16,8 @@ public class StatisticResult {
 	private long addedLines;
 	private long deletedLines;
 	
+	private int newComments;
+	
 	public Date getFrom() {
 		return from;
 	}
@@ -75,8 +77,16 @@ public class StatisticResult {
 		sb.append("PRs Merged: " + getPrsMerged() + "\n");
 		sb.append("PRs Added Lines: " + getAddedLines() + "\n");
 		sb.append("PRs Deleted Lines: " + getDeletedLines() + "\n");
+		sb.append("PRs Line Diff: " + (getAddedLines()-getDeletedLines()) + "\n");
+		sb.append("New Comments: " + getNewComments() + "\n");
 		sb.append("---\n");
 		return sb.toString();
+	}
+	public int getNewComments() {
+		return newComments;
+	}
+	public void setNewComments(int newComments) {
+		this.newComments = newComments;
 	}
 
 }

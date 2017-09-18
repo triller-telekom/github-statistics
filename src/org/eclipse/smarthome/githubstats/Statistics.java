@@ -9,12 +9,14 @@ public class Statistics {
 	
 	private IssueHandler ih;
 	private PRHandler ph;
+	private CommentHandler ch;
 	private Date from;
 	private Date to;
 
 	public Statistics(GitHub github, GHRepository repo, Date from, Date to, String gitWorkingDir) {
 		ih = new IssueHandler(github, repo);
 		ph = new PRHandler(github, repo, gitWorkingDir);
+		ch = new CommentHandler(github, repo);
 		this.from = from;
 		this.to = to;
 	}
@@ -22,6 +24,7 @@ public class Statistics {
 	public void fetchData() {
 		ih.fetchData(from, to);
 		ph.fetchData(from, to);
+		ch.fetchData(from, to);
 	}
 	
 	public StatisticResult getResult() {
@@ -35,6 +38,7 @@ public class Statistics {
 		result.setPrsMerged(ph.countMergedPRs());
 		result.setAddedLines(ph.countAddedLines());
 		result.setDeletedLines(ph.countDeletedLines());
+		result.setNewComments(ch.getCommentCount());
 		
 		return result;
 	}

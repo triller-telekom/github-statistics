@@ -53,10 +53,11 @@ public class PersistStats {
 	private String resultToCSVLine(StatisticResult result) {
 		StringBuilder sb = new StringBuilder();
 
-		String from = DateFormatUtils.format(result.getFrom(), "yyyy-MM-dd");
+//		String from = DateFormatUtils.format(result.getFrom(), "yyyy-MM-dd");
 		String to = DateFormatUtils.format(result.getTo(), "yyyy-MM-dd");
 
-		sb.append(from + " - " + to + ",");
+//		sb.append(from + " - " + to + ",");
+		sb.append(to + ",");
 		sb.append(result.getIssuesNew() + ",");
 		sb.append(result.getIssuesClosed() + ",");
 		sb.append(result.getPrsNew() + ",");

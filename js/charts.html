@@ -75,8 +75,10 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	createChart("issueContainer", "column", "Issues", timespan, issueSeries)
 	*/
 	
+	/*
 	var commentsSeries = [{name: "Comments", data: newComments}]
 	createChart("commentsContainer", "column", "New Comments", timespan, commentsSeries)
+	*/
 });
 
 function createChart(container, type, title, categories, series) {

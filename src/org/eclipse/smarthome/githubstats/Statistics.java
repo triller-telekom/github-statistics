@@ -25,7 +25,7 @@ public class Statistics {
 		ih.fetchData(from, to);
 		ph.fetchData(from, to);
 		//deactivate due to non consistent behavior of the github api
-		//ch.fetchData(from, to);
+		ch.fetchData(from, to);
 	}
 	
 	public StatisticResult getResult() {

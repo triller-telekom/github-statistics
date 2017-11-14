@@ -29,6 +29,11 @@ public class CommentHandler extends AbstractHandler {
 		//YYYY-MM-DDTHH:MM:SSZ
 //		GHIssueSearchBuilder isb = github.searchIssues().q("repo:" + repo.getFullName() + " type:issue updated:"+from_s +".."+to_s);
 		GHIssueSearchBuilder isb = github.searchIssues().q("repo:" + repo.getFullName() + " updated:"+from_s +".."+to_s);
+		from = DateUtils.addSeconds(from, -14);
+		to = DateUtils.addHours(to, 23);
+		to = DateUtils.addMinutes(to, 59);
+		to = DateUtils.addSeconds(to, (59-15));
+		System.out.println("Comment time: from: " + from + " to: " + to);
 		
 		issuesAndPRsWithComments = isb.list().asList();
 //		for(GHIssue i : issuesAndPRsWithComments)

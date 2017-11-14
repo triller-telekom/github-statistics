@@ -27,8 +27,9 @@ public class CommentHandler extends AbstractHandler {
 		String from_s = DateFormatUtils.format(from, "yyyy-MM-dd");
 		String to_s = DateFormatUtils.format(to, "yyyy-MM-dd");
 		//YYYY-MM-DDTHH:MM:SSZ
-//		GHIssueSearchBuilder isb = github.searchIssues().q("repo:" + repo.getFullName() + " type:issue updated:"+from_s +".."+to_s);
+//		updated:2017-11-14T15:55:00+01:00..2017-11-14T16:12:00+01:00 
 		GHIssueSearchBuilder isb = github.searchIssues().q("repo:" + repo.getFullName() + " updated:"+from_s +".."+to_s);
+
 		from = DateUtils.addSeconds(from, -14);
 		to = DateUtils.addHours(to, 23);
 		to = DateUtils.addMinutes(to, 59);

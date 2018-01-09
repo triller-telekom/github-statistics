@@ -16,7 +16,7 @@ public class Statistics {
 	public Statistics(GitHub github, GHRepository repo, Date from, Date to, String gitWorkingDir) {
 		ih = new IssueHandler(github, repo);
 		ph = new PRHandler(github, repo, gitWorkingDir);
-		ch = new CommentHandler(github, repo);
+//		ch = new CommentHandler(github, repo);
 		this.from = from;
 		this.to = to;
 	}
@@ -25,7 +25,7 @@ public class Statistics {
 		ih.fetchData(from, to);
 		ph.fetchData(from, to);
 		//deactivate due to non consistent behavior of the github api
-		ch.fetchData(from, to);
+//		ch.fetchData(from, to);
 	}
 	
 	public StatisticResult getResult() {
@@ -39,7 +39,7 @@ public class Statistics {
 		result.setPrsMerged(ph.countMergedPRs());
 		result.setAddedLines(ph.countAddedLines());
 		result.setDeletedLines(ph.countDeletedLines());
-		result.setNewComments(ch.getCommentCount());
+//		result.setNewComments(ch.getCommentCount());
 		
 		return result;
 	}

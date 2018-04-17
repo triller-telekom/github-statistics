@@ -20,6 +20,8 @@
 <div id="linesContainer"></div>
 <div id="issueContainer"></div>
 <div id="commentsContainer"></div>
+<!--<div id="pieContainer" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>-->
+<div id="pieContainer"></div>
 
 <script>
 d3.csv("smarthomeStats.csv", function(error, data) {
@@ -74,10 +76,26 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	var issueSeries = [{name: "New", data: issuesNew}, {name: "Closed", data: issuesClosed}]
 	createChart("issueContainer", "column", "Issues", timespan, issueSeries)
 	*/
-	/*
+
 	var commentsSeries = [{name: "Comments", data: newComments}]
 	createChart("commentsContainer", "column", "New Comments", timespan, commentsSeries)
-	*/
+});
+
+d3.csv("smarthomeStatsCategories.csv", function(error, data) {
+	//Bugs,Maintenance,Feature
+	var bug = data.map(function(item){
+		return parseInt(item['Bug'], 10)
+	})
+
+	var maint = data.map(function(item){
+		return parseInt(item['Maintenance'], 10)
+	})
+	var feature = data.map(function(item){
+		return parseInt(item['Feature'], 10)
+	})
+
+	var data = [{name: "Bug", y : bug[0]}, {name: "Maintenance", y : maint[0]}, {name: "Feature", y : feature[0]}]
+	createPieChart(data)
 });
 
 function createChart(container, type, title, categories, series) {
@@ -106,6 +124,63 @@ function createChart(container, type, title, categories, series) {
 		},
 
 		series: series
+	});
+};
+
+function createPieChart(chartData) {
+
+	// Make monochrome colors
+	var pieColors = (function () {
+		var colors = [],
+			base = Highcharts.getOptions().colors[0],
+			i;
+
+		for (i = 0; i < 10; i += 1) {
+			// Start out with a darkened base color (negative brighten), and end
+			// up with a much brighter color
+			colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+		}
+		return colors;
+	}());
+
+	// Build the chart
+	Highcharts.chart('pieContainer', {
+		chart: {
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false,
+			type: 'pie'
+		},
+		title: {
+			text: 'Pull Requests By Category Since Last Review'
+		},
+		tooltip: {
+			pointFormat: '{series.name}: <b>{point.y}</b>'
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				colors: pieColors,
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.y}',
+					distance: -50,
+					filter: {
+						property: 'y',
+						operator: '>',
+						value: 1
+					},
+					style: {
+						fontSize:'20px'
+					}
+				}
+			}
+		},
+		series: [{
+			name: 'Count:',
+			data: chartData
+		}]
 	});
 }
 </script>

@@ -34,7 +34,7 @@ public class CommentHandler extends AbstractHandler {
 		to = DateUtils.addHours(to, 23);
 		to = DateUtils.addMinutes(to, 59);
 		to = DateUtils.addSeconds(to, (59-15));
-		System.out.println("Comment time: from: " + from + " to: " + to);
+		System.out.println("Fetching Comments from: " + from + " to: " + to);
 		
 		issuesAndPRsWithComments = isb.list().asList();
 //		for(GHIssue i : issuesAndPRsWithComments)

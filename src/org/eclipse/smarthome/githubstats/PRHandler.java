@@ -36,6 +36,7 @@ public class PRHandler extends AbstractHandler {
 				.q("repo:" + repo.getFullName() + " type:pr created:" + from_s + ".." + to_s);
 		
 //		System.out.println("pr query: " + "repo:" + repo.getFullName() + " type:pr created:" + from_s + ".." + to_s);
+		System.out.println("Fetching PRs from: " + from + " to: " + to);
 
 		prs = isb.list().asList();
 

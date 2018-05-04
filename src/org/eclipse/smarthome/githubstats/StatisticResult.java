@@ -88,5 +88,15 @@ public class StatisticResult {
 	public void setNewComments(int newComments) {
 		this.newComments = newComments;
 	}
+	
+	public void addResult(StatisticResult res) {
+		this.addedLines += res.getAddedLines();
+		this.deletedLines += res.getDeletedLines();
+		this.issuesClosed += res.getIssuesClosed();
+		this.issuesNew += res.getIssuesNew();
+		this.newComments += res.getNewComments();
+		this.prsMerged += res.getPrsMerged();
+		this.prsNew += res.getPrsNew();
+	}
 
 }

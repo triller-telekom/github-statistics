@@ -25,6 +25,8 @@ public class IssueHandler extends AbstractHandler{
 		String to_s = DateFormatUtils.format(to, "yyyy-MM-dd");
 		GHIssueSearchBuilder isb = github.searchIssues().q("repo:" + repo.getFullName() + " type:issue created:"+from_s +".."+to_s);
 		
+		System.out.println("Fetching Issues from: " + from + " to: " + to);
+		
 		issuesNew = isb.list().asList();
 //		for(GHIssue i : issues)
 //		{

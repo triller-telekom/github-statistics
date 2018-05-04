@@ -1,0 +1,1 @@
+-rd 2018-05-09 -r openhab/openhab2-addons=/home/stefan/openhab2-master/git/openhab2-addons -r eclipse/smarthome=/home/stefan/smarthome-master/git/smarthome -r openhab/org.openhab.binding.zigbee=/home/stefan/openhab2-master/git/org.openhab.binding.zigbee -t XXXXXXXXXXXXXXXXXXXXXXXX 

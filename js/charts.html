@@ -17,14 +17,14 @@
 }
 </style>
 <div id="prContainer"></div>
+<div id="pieContainer"></div>
 <div id="linesContainer"></div>
 <div id="issueContainer"></div>
 <div id="commentsContainer"></div>
 <!--<div id="pieContainer" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>-->
-<div id="pieContainer"></div>
 
 <script>
-d3.csv("smarthomeStats.csv", function(error, data) {
+d3.csv("combinedStats.csv", function(error, data) {
 	//Timespan,IssuesNew,IssuesClosed,PRsNew,PRsMerged,LinesAdded,LinesDeleted
 	var timespan = data.map(function(item){
 		return item.Timespan
@@ -39,7 +39,7 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	})
 
 	//lines
-	var linedAdded = data.map(function(item){
+	var linesAdded = data.map(function(item){
 		return parseInt(item['LinesAdded'], 10)
 	})
 	var linesDeleted = data.map(function(item){
@@ -69,7 +69,7 @@ d3.csv("smarthomeStats.csv", function(error, data) {
 	//var linesSeries = [{name: "Added Lines", data: linedAdded}, {name: "Deleted Lines", data: linesDeleted}]
 	//createChart("linesContainer", "Code Base", timespan, linesSeries)
 
-	var linesSeries = [{name: "Lines", data: linesDiff}]
+	var linesSeries = [{name: "LinesAdded", data: linesAdded}, {name: "LinesRemoved", data: linesDeleted}]
 	createChart("linesContainer", "column", "Lines of Code Changes", timespan, linesSeries)
 
 	/*

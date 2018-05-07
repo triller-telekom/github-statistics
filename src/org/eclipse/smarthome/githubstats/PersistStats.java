@@ -63,7 +63,7 @@ public class PersistStats {
 		sb.append(result.getPrsNew() + ",");
 		sb.append(result.getPrsMerged() + ",");
 		sb.append(result.getAddedLines() + ",");
-		sb.append(result.getDeletedLines() + ",");
+		sb.append((result.getDeletedLines()*-1) + ",");
 		sb.append((result.getAddedLines() - result.getDeletedLines()) + ",");
 		sb.append(result.getNewComments() + "\n");
 

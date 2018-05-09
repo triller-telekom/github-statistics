@@ -16,6 +16,7 @@
 	margin: 0 auto
 }
 </style>
+
 <div id="prContainer"></div>
 <div id="pieContainer"></div>
 <div id="linesContainer"></div>
@@ -63,13 +64,13 @@ d3.csv("combinedStats.csv", function(error, data) {
 	*/
 
 	//var prSeries = [{name: "New", data: prsNew}, {name: "Merged", data: prsMerged}]
-	var prSeries = [{name: "Merged", data: prsMerged}]
+	var prSeries = [{name: "Merged", data: prsMerged, color: '#6f42c1'}]
 	createChart("prContainer", "column", "Pull requests", timespan, prSeries)
 
 	//var linesSeries = [{name: "Added Lines", data: linedAdded}, {name: "Deleted Lines", data: linesDeleted}]
 	//createChart("linesContainer", "Code Base", timespan, linesSeries)
 
-	var linesSeries = [{name: "LinesAdded", data: linesAdded}, {name: "LinesRemoved", data: linesDeleted}]
+	var linesSeries = [{name: "LinesAdded", data: linesAdded, color: '#28a745'}, {name: "LinesRemoved", data: linesDeleted, color: '#d73a49'}]
 	createChart("linesContainer", "column", "Lines of Code Changes", timespan, linesSeries)
 
 	/*
@@ -116,6 +117,13 @@ function createChart(container, type, title, categories, series) {
 		title: {
             text: title
         },
+        
+        plotOptions: {
+			series: {
+				stacking: 'normal',
+				pointWidth: 20
+			}
+		},
 
 		legend: {
 			layout: 'vertical',

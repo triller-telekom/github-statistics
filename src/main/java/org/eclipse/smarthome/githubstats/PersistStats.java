@@ -9,6 +9,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 public class PersistStats {
 
 	private FileWriter fw;
+	private StringBuilder sBuild = new StringBuilder();
 
 	public PersistStats(String fileName) {
 		File file = new File(fileName);
@@ -23,6 +24,8 @@ public class PersistStats {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		sBuild.append("\n\n");
+		sBuild.append(buildHeadLine());
 	}
 
 	private String buildHeadLine() {
@@ -48,6 +51,7 @@ public class PersistStats {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		sBuild.append(resultToCSVLine(result));
 	}
 
 	private String resultToCSVLine(StatisticResult result) {
@@ -77,7 +81,7 @@ public class PersistStats {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.println(sBuild.toString());
 	}
 
 }

@@ -148,7 +148,6 @@ public class GithubStats {
 			persister.persist(a);			
 		}
 		persister.finish();
-		System.out.println("Done");
 	}
 
 	private static void printHelp(Options options) {

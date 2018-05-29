@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="lib/gson-2.8.1.jar"/>
-	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar" sourcepath="lib/commons-lang-2.6-sources.jar"/>
-	<classpathentry kind="lib" path="lib/commons-io-2.5.jar"/>
-	<classpathentry kind="lib" path="lib/jackson/core/jackson-annotations/2.4.5/jackson-annotations-2.4.5.jar"/>
-	<classpathentry kind="lib" path="lib/jackson/core/jackson-core/2.4.5/jackson-core-2.4.5.jar"/>
-	<classpathentry kind="lib" path="lib/jackson/core/jackson-databind/2.4.5/jackson-databind-2.4.5.jar"/>
-	<classpathentry kind="lib" path="lib/github-api-1.90-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="lib/commons-cli-1.4.jar" sourcepath="lib/commons-cli-1.4-sources.jar"/>
-	<classpathentry kind="output" path="bin"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/kohsuke/github-api/1.93/github-api-1.93.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.7/commons-codec-1.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.9.2/jackson-databind-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.9.2/jackson-core-2.9.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/1.4/commons-io-1.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-cli/commons-cli/1.4/commons-cli-1.4.jar"/>
 </classpath>

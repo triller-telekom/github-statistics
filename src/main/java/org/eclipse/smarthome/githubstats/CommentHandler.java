@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.time.DateFormatUtils;
-import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.kohsuke.github.GHIssue;
 import org.kohsuke.github.GHIssueComment;
 import org.kohsuke.github.GHIssueSearchBuilder;
@@ -44,7 +44,7 @@ public class CommentHandler extends AbstractHandler {
 		for(GHIssue i : issuesAndPRsWithComments)
 		{
 			//TODO: this is an ugly hack relying on a patched github-api-1.90-SNAPSHOT.jar otherwise the listComments() runs into a NPE
-			i.setOwner(repo);
+//			i.setOwner(repo);
 			try {				
 				for(GHIssueComment comment : i.listComments()) {					
 					Date commentDate = comment.getCreatedAt();

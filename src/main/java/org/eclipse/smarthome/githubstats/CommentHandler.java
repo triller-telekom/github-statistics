@@ -1,6 +1,7 @@
 package org.eclipse.smarthome.githubstats;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,17 @@ public class CommentHandler extends AbstractHandler {
 		for(GHIssue i : issuesAndPRsWithComments)
 		{
 			//TODO: this is an ugly hack relying on a patched github-api-1.90-SNAPSHOT.jar otherwise the listComments() runs into a NPE
-//			i.setOwner(repo);
+//			i.setOwner(repo);			
+			Field f1;
+			try {
+				f1 = i.getClass().getDeclaredField("owner");
+				f1.setAccessible(true);
+				f1.set(i, repo);
+			} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			try {				
 				for(GHIssueComment comment : i.listComments()) {					
 					Date commentDate = comment.getCreatedAt();
